@@ -48,7 +48,7 @@ while true; do
       BEST_GAME=$NUM_GUESSES
     fi
 
-    # Update user stats in DB
+    # Update user stats in database
     $PSQL "UPDATE users SET games_played=$GAMES_PLAYED, best_game=$BEST_GAME WHERE user_id=$USER_ID"
 
     break
