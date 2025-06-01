@@ -5,12 +5,12 @@ PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 echo "Enter your username:"
 read USERNAME
 
-
+#does user exist?
 USER_DATA=$($PSQL "SELECT user_id, games_played, best_game FROM users WHERE username='$USERNAME'")
 
 if [[ -z $USER_DATA ]]
 then
-  # New user, insert into DB
+ 
   echo "Welcome, $USERNAME! It looks like this is your first time here."
   INSERT_RESULT=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')")
   USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
