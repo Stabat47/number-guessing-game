@@ -10,14 +10,14 @@ USER_DATA=$($PSQL "SELECT user_id, games_played, best_game FROM users WHERE user
 
 if [[ -z $USER_DATA ]]
 then
- 
+ #add new user to db
   echo "Welcome, $USERNAME! It looks like this is your first time here."
   INSERT_RESULT=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')")
   USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
   GAMES_PLAYED=0
   BEST_GAME="null"
 else
-  # Existing user
+  
   IFS="|" read USER_ID GAMES_PLAYED BEST_GAME <<< "$USER_DATA"
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
