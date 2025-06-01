@@ -20,6 +20,7 @@ else
   
   IFS="|" read USER_ID GAMES_PLAYED BEST_GAME <<< "$USER_DATA"
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  echo
 fi
 
 # Generate secret number 1-1000
